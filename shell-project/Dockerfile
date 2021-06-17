@@ -6,7 +6,7 @@ FROM $DEV_BASE
 COPY --from=base --chown=nuxeo:nuxeo /docker-entrypoint.sh /
 COPY --from=base --chown=nuxeo:nuxeo /docker-entrypoint-init.d /docker-entrypoint-init.d/
 
-USER nuxeo
+USER nuxeo:nuxeo
 
 # Install oh-my-zsh
 RUN sh -c "$(curl -fsSL https://raw.github.com/ohmyzsh/ohmyzsh/master/tools/install.sh)"
