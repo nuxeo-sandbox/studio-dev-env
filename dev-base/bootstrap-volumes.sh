@@ -6,9 +6,6 @@ read -r -d '' VOLUMES <<-'EOS'
 /home/nuxeo/.m2
 /home/nuxeo/.m2/repository
 /home/nuxeo/workspace
-/home/nuxeo/workspace/deployable
-/home/nuxeo/workspace/deployable/conf.d
-/home/nuxeo/workspace/deployable/nuxeo.war
 /home/nuxeo/.vscode-server
 /home/nuxeo/.vscode-server/extensions
 /home/nuxeo/.vscode-server-insiders
