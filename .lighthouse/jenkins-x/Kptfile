@@ -1,0 +1,11 @@
+apiVersion: kpt.dev/v1alpha1
+kind: Kptfile
+metadata:
+  name: jenkins-x
+upstream:
+  type: git
+  git:
+    commit: dc951a1238afee472e7cc93968791d4571c52424
+    repo: https://github.com/nuxeo/nos-jx-make.d
+    directory: /tekton/packs/jenkins-trigger
+    ref: v0.0.49

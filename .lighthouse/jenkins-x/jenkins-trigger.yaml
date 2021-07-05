@@ -1,0 +1,20 @@
+apiVersion: tekton.dev/v1beta1
+kind: PipelineRun
+metadata:
+  name: trigger
+spec:
+  pipelineSpec:
+    tasks:
+    - name: nos-triggers
+      resources: {}
+      taskSpec:
+        metadata: {}
+        stepTemplate:
+          image: uses:nuxeo/nos-jx-make.d/tekton/tasks/jenkins-trigger.yaml@versionStream
+        steps:
+        - name: jx-variables
+        - name: trigger
+  podTemplate: {}
+  serviceAccountName: tekton-bot
+  timeout: 240h0m0s
+status: {}

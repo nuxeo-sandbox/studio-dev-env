@@ -60,12 +60,9 @@ pipeline {
                 stage('latest') {
                     when {
                         branch 'master'
-                        not {
-                            buildingTag()
-                        }
                     }
                     steps {
-                        gitStatusWrapper(credentialsId: 'jx-pipeline-git-github-github',
+                        gitStatusWrapper(credentialsId: 'pipeline-git-github',
                                          description: 'skaffold latest images',
                                          failureDescription: 'skaffold latest images',
                                          gitHubContext: 'skaffold-latest',
@@ -79,12 +76,9 @@ pipeline {
                 stage('release') {
                     when {
                         buildingTag()
-                        not {
-                            branch 'master'
-                        }
                     }
                     steps {
-                        gitStatusWrapper(credentialsId: 'jx-pipeline-git-github-github',
+                        gitStatusWrapper(credentialsId: 'pipeline-git-github',
                                          description: 'skaffold latest images',
                                          failureDescription: 'skaffold latest images',
                                          gitHubContext: 'skaffold-latest',
@@ -97,15 +91,10 @@ pipeline {
                 }
                 stage('branch') {
                     when {
-                        not {
-                            branch 'master'
-                        }
-                        not {
-                            buildingTag()
-                        }
+                        changeRequest()
                     }
                     steps {
-                        gitStatusWrapper(credentialsId: 'jx-pipeline-git-github-github',
+                        gitStatusWrapper(credentialsId: 'pipeline-git-github',
                                          description: 'skaffold branch images',
                                          failureDescription: 'skaffold branch images',
                                          gitHubContext: 'skaffold-branch',
